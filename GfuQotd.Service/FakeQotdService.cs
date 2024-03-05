@@ -23,4 +23,9 @@ public class FakeQotdService : IQotdService
 
         return Task.FromResult(qotd);
     }
+
+    public Task<IEnumerable<AuthorViewModel>?> GetAuthorsAsync()
+    {
+        throw new NotImplementedException();
+    }
 }

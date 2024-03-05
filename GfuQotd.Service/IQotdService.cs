@@ -10,4 +10,5 @@ namespace GfuQotd.Service;
 public interface IQotdService
 {
     Task<QuoteOfTheDayViewModel?> GetQuoteOfTheDayAsync();
+    Task<IEnumerable<AuthorViewModel>?> GetAuthorsAsync();
 }

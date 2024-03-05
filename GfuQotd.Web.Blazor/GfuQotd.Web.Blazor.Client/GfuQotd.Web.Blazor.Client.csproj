@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\GfuQotd.ComponentsLibrary\GfuQotd.ComponentsLibrary.csproj" />
     <ProjectReference Include="..\..\GfuQotd.Service\GfuQotd.Service.csproj" />
+    <ProjectReference Include="..\..\GfuQotd.Shared\GfuQotd.Shared.csproj" />
   </ItemGroup>
 
 </Project>

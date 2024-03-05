@@ -1,0 +1,40 @@
+﻿@page "/authors/overview"
+@rendermode InteractiveWebAssembly
+
+@if (AuthorsVm is null || !AuthorsVm.Any())
+{
+    <div>Daten werden geladen...</div>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Beschreibung</th>
+                <th>Geburtsdatum</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in AuthorsVm)
+            {
+                <tr>
+                    <td>
+                        <AuthorImage ImageMimeType="@item.PhotoMimeType"
+                                     Image="@item.Photo"
+                                     alt="@item.Name" width="120">
+                        </AuthorImage>
+                    </td>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@(item.BirthDate is not null ? item.BirthDate.Value.ToShortDateString() : "k.A.")</td>
+                    <td>
+                        <!-- Buttons Aktionen-->
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -11,9 +11,15 @@ namespace GfuQotd.Service;
 public class QotdService(HttpClient client) : IQotdService
 {
     private const string QotdUri = "authors/quotes/random";
+    private const string QotdAuthorsUri = "authors";
 
     public async Task<QuoteOfTheDayViewModel?> GetQuoteOfTheDayAsync()
     {
         return await client.GetFromJsonAsync<QuoteOfTheDayViewModel>(QotdUri);
+    }
+
+    public async Task<IEnumerable<AuthorViewModel>?> GetAuthorsAsync()
+    {
+        return await client.GetFromJsonAsync<IEnumerable<AuthorViewModel>>(QotdAuthorsUri);
     }
 }
