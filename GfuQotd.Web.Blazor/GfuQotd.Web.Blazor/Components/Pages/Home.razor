@@ -1,8 +1,14 @@
 ﻿@page "/"
+@using GfuQotd.Shared.Utilities
 
 <PageTitle>Quote of the Day</PageTitle>
 
 
 <CascadingValue Name="TitleColor" Value="_color">
-    <QuoteOfTheDay Title="Spruch des Tages" QotdVm="QotdViewModel"></QuoteOfTheDay>
+    <QuoteOfTheDay Title="Spruch des Tages" QotdVm="QotdViewModel">
+        <!-- ChildContent -->
+        <LogOfQotd>
+            <div class="alert alert-dark">@QotdViewModel?.LogAsJson()</div>
+        </LogOfQotd>
+    </QuoteOfTheDay>
 </CascadingValue>

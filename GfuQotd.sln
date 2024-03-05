@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GfuQotd.Web.Blazor", "GfuQotd.Web.Blazor\GfuQotd.Web.Blazor\GfuQotd.Web.Blazor.csproj", "{F3B404FC-F82E-425B-B97F-B037A084E80A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GfuQotd.Web.Blazor", "GfuQotd.Web.Blazor\GfuQotd.Web.Blazor\GfuQotd.Web.Blazor.csproj", "{F3B404FC-F82E-425B-B97F-B037A084E80A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GfuQotd.Web.Blazor.Client", "GfuQotd.Web.Blazor\GfuQotd.Web.Blazor.Client\GfuQotd.Web.Blazor.Client.csproj", "{D6C0CC5B-F922-410D-9DAB-31045CEE7FCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GfuQotd.Web.Blazor.Client", "GfuQotd.Web.Blazor\GfuQotd.Web.Blazor.Client\GfuQotd.Web.Blazor.Client.csproj", "{D6C0CC5B-F922-410D-9DAB-31045CEE7FCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GfuQotd.Service", "GfuQotd.Service\GfuQotd.Service.csproj", "{5B878F42-5693-4E33-9DA0-C4EF107912E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GfuQotd.Service", "GfuQotd.Service\GfuQotd.Service.csproj", "{5B878F42-5693-4E33-9DA0-C4EF107912E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GfuQotd.Shared", "GfuQotd.Shared\GfuQotd.Shared.csproj", "{EE9F1245-C5CF-46CF-BBE4-654C47B21647}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GfuQotd.Shared", "GfuQotd.Shared\GfuQotd.Shared.csproj", "{EE9F1245-C5CF-46CF-BBE4-654C47B21647}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GfuQotd.ComponentsLibrary", "GfuQotd.ComponentsLibrary\GfuQotd.ComponentsLibrary.csproj", "{298003BA-1C1D-410A-A7DF-1F2FAA9AF712}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GfuQotd.ComponentsLibrary", "GfuQotd.ComponentsLibrary\GfuQotd.ComponentsLibrary.csproj", "{298003BA-1C1D-410A-A7DF-1F2FAA9AF712}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

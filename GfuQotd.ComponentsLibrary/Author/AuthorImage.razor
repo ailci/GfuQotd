@@ -1,0 +1,17 @@
+﻿@if (!string.IsNullOrEmpty(ImageMimeType))
+{
+    <img width="150" @attributes="AdditionalAttributes" src="data:@ImageMimeType;base64,@Convert.ToBase64String(Image)" />
+}
+else
+{
+    <img width="150" @attributes="AdditionalAttributes" src="https://via.placeholder.com/150" />
+}
+
+@code {
+
+    [Parameter] public byte[]? Image { get; set; }
+    [Parameter] public string? ImageMimeType { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] // Für alle anderen Attribute die nicht mit [Parameter] übergeben wurden
+    public Dictionary<string,object>? AdditionalAttributes { get; set; }
+}
