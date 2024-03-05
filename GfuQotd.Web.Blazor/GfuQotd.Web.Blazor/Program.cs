@@ -1,5 +1,6 @@
 using GfuQotd.Web.Blazor.Client.Pages;
 using GfuQotd.Web.Blazor.Components;
+using GfuQotd.Web.Blazor.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+//Konfiguration
+builder.Services.AddQotdConfig(builder.Configuration)
+    .AddApiServicesConfig()
+    .AddHttpClientsConfig(builder.Configuration);
 
 var app = builder.Build();
 

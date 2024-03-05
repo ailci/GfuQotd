@@ -12,6 +12,7 @@
     <ProjectReference Include="..\..\GfuQotd.Shared\GfuQotd.Shared.csproj" />
     <ProjectReference Include="..\GfuQotd.Web.Blazor.Client\GfuQotd.Web.Blazor.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
   </ItemGroup>
 
 </Project>
