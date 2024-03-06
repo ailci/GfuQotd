@@ -39,4 +39,13 @@ public class QotdService(HttpClient client) : IQotdService
 
         return await response.Content.ReadFromJsonAsync<AuthorViewModel>();
     }
+
+    public async Task<bool> DeleteAuthorAsync(Guid id)
+    {
+        var response = await client.DeleteAsync($"authors/{id}");
+
+        response.EnsureSuccessStatusCode();
+
+        return response.IsSuccessStatusCode;
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using GfuQotd.Service;
+using GfuQotd.Service.Handler;
 using GfuQotd.Shared;
 
 namespace GfuQotd.Web.Blazor.Client.Configuration;
@@ -26,12 +27,12 @@ public static class ServiceExtensionsWasm
         //});
 
         //TypedClient
+        services.AddTransient<ApiKeyDelegationHandler>();
         services.AddHttpClient<IQotdService, QotdService>(opt =>
         {
             opt.BaseAddress = new Uri(appSettings?.ExternalQotdServiceUri);
             opt.DefaultRequestHeaders.Add("Accept", "application/json");
-        });
-
+        }).AddHttpMessageHandler<ApiKeyDelegationHandler>();
 
         return services;
     }

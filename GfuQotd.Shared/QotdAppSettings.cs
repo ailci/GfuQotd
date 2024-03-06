@@ -9,4 +9,5 @@ namespace GfuQotd.Shared;
 public class QotdAppSettings
 {
     public required string ExternalQotdServiceUri { get; init; }
+    public required string XApiKey { get; init; }
 }

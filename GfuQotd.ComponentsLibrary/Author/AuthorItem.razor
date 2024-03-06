@@ -15,7 +15,7 @@
             <!-- Buttons Aktionen-->
             <a href="" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></a> |
             <a href="@($"authors/details/{AuthorVm.Id}")" class="btn btn-info"><i class="bi bi-info-circle-fill"></i></a> |
-            <a href="" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+            <button @onclick="() => DeleteAuthor(AuthorVm.Id)" class="btn btn-danger"><i class="bi bi-trash"></i></button>
         </td>
     </tr>
 }

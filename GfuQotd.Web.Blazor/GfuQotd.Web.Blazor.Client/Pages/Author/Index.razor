@@ -37,7 +37,10 @@ else
                 </tr> *@
 
                 <!-- 2. Version Componente -->
-                <AuthorItem AuthorVm="@item" @rendermode="InteractiveWebAssembly"></AuthorItem>
+                <AuthorItem AuthorVm="@item"
+                            @rendermode="InteractiveWebAssembly"
+                            OnAuthorDeleteEventCallback="@DeleteAuthor">
+                </AuthorItem>
             }
         </tbody>
     </table>

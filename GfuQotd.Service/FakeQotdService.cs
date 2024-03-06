@@ -33,4 +33,9 @@ public class FakeQotdService : IQotdService
     {
         throw new NotImplementedException();
     }
+
+    public Task<bool> DeleteAuthorAsync(Guid id)
+    {
+        throw new NotImplementedException();
+    }
 }
