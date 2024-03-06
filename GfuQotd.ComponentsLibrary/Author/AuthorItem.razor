@@ -1,0 +1,21 @@
+﻿
+@if (AuthorVm is not null)
+{
+    <tr>
+        <td>
+            <AuthorImage ImageMimeType="@AuthorVm.PhotoMimeType"
+                         Image="@AuthorVm.Photo"
+                         alt="@AuthorVm.Name" width="120">
+            </AuthorImage>
+        </td>
+        <td>@AuthorVm.Name</td>
+        <td>@AuthorVm.Description</td>
+        <td>@(AuthorVm.BirthDate is not null ? AuthorVm.BirthDate.Value.ToShortDateString() : "k.A.")</td>
+        <td>
+            <!-- Buttons Aktionen-->
+            <a href="" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></a> |
+            <a href="@($"authors/details/{AuthorVm.Id}")" class="btn btn-info"><i class="bi bi-info-circle-fill"></i></a> |
+            <a href="" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+        </td>
+    </tr>
+}

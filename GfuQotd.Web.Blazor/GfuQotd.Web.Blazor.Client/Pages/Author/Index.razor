@@ -1,5 +1,5 @@
 ﻿@page "/authors/overview"
-@rendermode InteractiveWebAssembly
+@rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
 
 @if (AuthorsVm is null || !AuthorsVm.Any())
 {
@@ -20,7 +20,8 @@ else
         <tbody>
             @foreach (var item in AuthorsVm)
             {
-                <tr>
+                <!-- 1. Version Klassik -->
+                @*  <tr>
                     <td>
                         <AuthorImage ImageMimeType="@item.PhotoMimeType"
                                      Image="@item.Photo"
@@ -33,7 +34,10 @@ else
                     <td>
                         <!-- Buttons Aktionen-->
                     </td>
-                </tr>
+                </tr> *@
+
+                <!-- 2. Version Componente -->
+                <AuthorItem AuthorVm="@item" @rendermode="InteractiveWebAssembly"></AuthorItem>
             }
         </tbody>
     </table>

@@ -28,4 +28,9 @@ public class FakeQotdService : IQotdService
     {
         throw new NotImplementedException();
     }
+
+    public Task<AuthorViewModel?> GetAuthorByIdAsync(Guid id, bool includeQuotes = false)
+    {
+        throw new NotImplementedException();
+    }
 }

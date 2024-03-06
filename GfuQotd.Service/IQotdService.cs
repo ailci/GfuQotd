@@ -11,4 +11,5 @@ public interface IQotdService
 {
     Task<QuoteOfTheDayViewModel?> GetQuoteOfTheDayAsync();
     Task<IEnumerable<AuthorViewModel>?> GetAuthorsAsync();
+    Task<AuthorViewModel?> GetAuthorByIdAsync(Guid id, bool includeQuotes = false);
 }

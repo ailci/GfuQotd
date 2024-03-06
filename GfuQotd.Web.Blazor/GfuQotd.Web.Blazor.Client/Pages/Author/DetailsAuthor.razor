@@ -1,0 +1,62 @@
+﻿@page "/authors/details/{Id:guid}"
+@using GfuQotd.Service
+@using GfuQotd.Shared.Model
+@rendermode InteractiveAuto
+
+<h3>Details für @AuthorVm?.Name</h3>
+
+<!-- Author Infos -->
+<div class="row">
+    <div class="card mb-2" style="width: 18rem;">
+        <AuthorImage Image="@AuthorVm?.Photo"
+                     ImageMimeType="@AuthorVm?.PhotoMimeType"
+                     class="card-img-top">
+        </AuthorImage>
+        <div class="card-body">
+            <h5 class="card-title">@AuthorVm?.Name</h5>
+            <p class="card-subtitle text-muted">@AuthorVm?.Description</p>
+            <p class="card-text">@AuthorVm?.BirthDate?.ToShortDateString()</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- Sprüche -->
+@if (AuthorVm?.Quotes is not null && AuthorVm?.Quotes.Count > 0)
+{
+    <div class="row">
+        <ul class="list-group list-group-numbered">
+            @foreach (var quote in AuthorVm.Quotes)
+            {
+                <li class="list-group-item">@quote.QuoteText</li>
+            }
+        </ul>
+    </div>
+}
+
+<!-- Link zurück zur Author-Übersicht -->
+<a class="btn btn-outline-primary mt-3" @onclick="@NavigateToOverview">zurück zur Übersicht</a>
+
+@code {
+
+    [Parameter] public Guid Id { get; set; }
+
+    [Inject] ILogger<DetailsAuthor> Logger { get; set; } = default!;
+
+    [Inject] private IQotdService QotdService { get; set; } = default!;
+    [Inject] public NavigationManager NavManager { get; set; } = default!;
+
+    public AuthorViewModel? AuthorVm { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Logger.LogInformation($"Author-Details aufgerufen mit AuthorId: {Id}");
+        AuthorVm = await QotdService.GetAuthorByIdAsync(Id, true);
+    }
+
+    private void NavigateToOverview()
+    {
+        NavManager.NavigateTo("/authors/overview");
+    }
+
+}
