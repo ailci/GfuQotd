@@ -11,15 +11,7 @@
         </div>
 
         <article class="content px-4">
-            <ErrorBoundary @ref="@_errorBoundary" Context="ex">
-                <ChildContent>
-                    @Body
-                </ChildContent>
-                <ErrorContent>
-                    <div class="alert alert-danger">@ex.Message</div>
-                </ErrorContent>
-            </ErrorBoundary>
-          
+            @Body
         </article>
     </main>
 </div>
@@ -30,12 +22,4 @@
     <a class="dismiss">🗙</a>
 </div>
 
-@code
-{
-    private ErrorBoundary? _errorBoundary;
 
-    protected override void OnParametersSet()
-    {
-        _errorBoundary?.Recover();
-    }
-}

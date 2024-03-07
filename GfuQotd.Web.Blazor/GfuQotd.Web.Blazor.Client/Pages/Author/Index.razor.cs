@@ -35,6 +35,7 @@ public partial class Index
         else
         {
             //TODO: Fehlerbenachrichtigung
+            //throw new Exception("Author konnte nicht gelöscht werden");
         }
     }
 }

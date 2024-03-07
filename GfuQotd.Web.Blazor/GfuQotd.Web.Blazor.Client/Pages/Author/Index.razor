@@ -1,27 +1,29 @@
 ﻿@page "/authors/overview"
 @rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
 
-@if (AuthorsVm is null || !AuthorsVm.Any())
-{
-    <div>Daten werden geladen...</div>
-}
-else
-{
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Photo</th>
-                <th>Name</th>
-                <th>Beschreibung</th>
-                <th>Geburtsdatum</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in AuthorsVm)
-            {
-                <!-- 1. Version Klassik -->
-                @*  <tr>
+<ErrorBoundary Context="ex">
+    <ChildContent>
+        @if (AuthorsVm is null || !AuthorsVm.Any())
+        {
+            <div>Daten werden geladen...</div>
+        }
+        else
+        {
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Beschreibung</th>
+                    <th>Geburtsdatum</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in AuthorsVm)
+                {
+                    <!-- 1. Version Klassik -->
+                    @*  <tr>
                     <td>
                         <AuthorImage ImageMimeType="@item.PhotoMimeType"
                                      Image="@item.Photo"
@@ -36,12 +38,17 @@ else
                     </td>
                 </tr> *@
 
-                <!-- 2. Version Componente -->
-                <AuthorItem AuthorVm="@item"
-                            @rendermode="InteractiveWebAssembly"
-                            OnAuthorDeleteEventCallback="@DeleteAuthor">
-                </AuthorItem>
-            }
-        </tbody>
-    </table>
-}
+                    <!-- 2. Version Componente -->
+                    <AuthorItem AuthorVm="@item"
+                                @rendermode="InteractiveWebAssembly"
+                                OnAuthorDeleteEventCallback="@DeleteAuthor">
+                    </AuthorItem>
+                }
+                </tbody>
+            </table>
+        }
+    </ChildContent>
+    <ErrorContent>
+        <div class="alert alert-danger">@ex.Message</div>
+    </ErrorContent>
+</ErrorBoundary>
