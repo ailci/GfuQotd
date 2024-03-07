@@ -38,4 +38,9 @@ public class FakeQotdService : IQotdService
     {
         throw new NotImplementedException();
     }
+
+    public Task<bool> AddAuthorAsync(AuthorForCreationViewModel authorForCreationViewModel)
+    {
+        throw new NotImplementedException();
+    }
 }

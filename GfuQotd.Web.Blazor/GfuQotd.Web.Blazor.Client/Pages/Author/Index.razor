@@ -1,6 +1,10 @@
 ﻿@page "/authors/overview"
 @rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
 
+<p>
+    <button class="btn btn-primary" @onclick="NavigateToAuthorNew"><i class="bi bi-plus-circle"></i> Neuer Autor</button>
+</p>
+
 <ErrorBoundary Context="ex">
     <ChildContent>
         @if (AuthorsVm is null || !AuthorsVm.Any())

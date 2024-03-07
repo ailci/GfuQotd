@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,42 @@ public class QotdService(HttpClient client) : IQotdService
     public async Task<bool> DeleteAuthorAsync(Guid id)
     {
         var response = await client.DeleteAsync($"authors/{id}");
+
+        response.EnsureSuccessStatusCode();
+
+        return response.IsSuccessStatusCode;
+    }
+
+    public async Task<bool> AddAuthorAsync(AuthorForCreationViewModel authorForCreationViewModel)
+    {
+        var values = new List<KeyValuePair<string, string>>
+        {
+            new("Name", authorForCreationViewModel.Name),
+            new("Description", authorForCreationViewModel.Description)
+        };
+
+        if (authorForCreationViewModel.BirthDate.HasValue)
+        {
+            values.Add(new KeyValuePair<string, string>("BirthDate", authorForCreationViewModel.BirthDate.Value.ToString("O"))); //Ansonsten Fehler Tausch von Monat und Tag
+        }
+
+        var multipartContent = new MultipartFormDataContent();
+        values.ForEach(c => multipartContent.Add(new StringContent(c.Value), c.Key));
+
+        //Bild vorhanden
+        if (authorForCreationViewModel.Photo is not null)
+        {
+            var fileContent = new StreamContent(authorForCreationViewModel.Photo.OpenReadStream());
+            fileContent.Headers.ContentType = new MediaTypeHeaderValue(authorForCreationViewModel.Photo.ContentType);
+            fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+            {
+                Name = "Photo",
+                FileName = authorForCreationViewModel.Photo.Name
+            };
+            multipartContent.Add(fileContent);
+        }
+
+        var response = await client.PostAsync(QotdAuthorsUri, multipartContent);
 
         response.EnsureSuccessStatusCode();
 

@@ -1,0 +1,58 @@
+﻿@page "/authors/new"
+@rendermode InteractiveWebAssembly
+
+
+<div class="row align-items-center">
+    <div class="col-6">
+        <EditForm Model="AuthorForCreationVm" OnValidSubmit="HandleValidSubmit">
+            
+            <DataAnnotationsValidator />
+
+            <div class="form-floating mb-3">
+                <InputText id="Name"
+                           class="form-control"
+                           @bind-Value="@AuthorForCreationVm.Name"
+                           placeholder=" ">
+                </InputText>
+                <label for="Name">Name</label>
+                <ValidationMessage For="@(() => AuthorForCreationVm.Name)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText id="Description"
+                           class="form-control"
+                           @bind-Value="@AuthorForCreationVm.Description"
+                           placeholder=" ">
+                </InputText>
+                <label for="Description">Beschreibung</label>
+                <ValidationMessage For="@(() => AuthorForCreationVm.Description)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputDate id="BirthDate"
+                           class="form-control"
+                           @bind-Value="@AuthorForCreationVm.BirthDate"
+                           placeholder=" ">
+                </InputDate>
+                <label for="BirthDate">Geburtsdatum</label>
+                <ValidationMessage For="@(() => AuthorForCreationVm.BirthDate)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputFile id="Photo" OnChange="OnInputFileChanged"
+                           class="form-control"
+                           @bind-Value="@AuthorForCreationVm.Photo"
+                           accept="image/*">
+                </InputFile>
+                <label for="Photo">Photo</label>
+                <ValidationMessage For="@(() => AuthorForCreationVm.Photo)" />
+            </div>
+
+            <div class="d-flex mb-3">
+                <button type="submit" class="btn btn-primary">speichern</button>
+            </div>
+
+        </EditForm>
+
+    </div>
+</div>
