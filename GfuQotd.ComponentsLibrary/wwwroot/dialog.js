@@ -4,3 +4,7 @@
 export function showPrompt(message) {
   return prompt(message, 'Type anything here');
 }
+
+export function showConfirm(message) {
+    return window.confirm(message);
+}

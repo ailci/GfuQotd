@@ -1,4 +1,5 @@
-﻿using GfuQotd.Service;
+﻿using GfuQotd.ComponentsLibrary;
+using GfuQotd.Service;
 using GfuQotd.Service.Handler;
 using GfuQotd.Shared;
 
@@ -10,6 +11,9 @@ public static class ServiceExtensionsWasm
     {
         //AppSettings OptionsPattern
         services.Configure<QotdAppSettings>(configuration.GetSection(nameof(QotdAppSettings)));
+
+        //Dialog
+        services.AddScoped<DialogService>();
 
         return services;
     }
