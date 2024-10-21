@@ -1,3 +1,5 @@
+using System.Net.Http.Json;
+using System.Text.Json;
 using GfuQotd.Shared.Model;
 using Microsoft.AspNetCore.Components;
 
@@ -24,11 +26,15 @@ public partial class Home
         Logger.LogInformation("Home Componente aufgerufen...");
 
         // 1. Version Mit HttpClientFactory
-        using var client = HttpClientFactory.CreateClient("qotdapiservice");
-        var response = await client.GetAsync("authors/quotes/random");
-        response.EnsureSuccessStatusCode();
-        var json = await response.Content.ReadAsStringAsync();
-        Logger.LogInformation($"Response => {json}");
+        //using var client = HttpClientFactory.CreateClient("qotdapiservice");
+        //var response = await client.GetAsync("authors/quotes/random");
+        //response.EnsureSuccessStatusCode();
+        //var json = await response.Content.ReadAsStringAsync();
+        //Logger.LogInformation($"Response => {json}");
+        //QotdViewModel = JsonSerializer.Deserialize<QuoteOfTheDayViewModel>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true});
 
+        // 2. Version mit HttpClientFactory Abkürzung
+        using var client = HttpClientFactory.CreateClient("qotdapiservice");
+        QotdViewModel = await client.GetFromJsonAsync<QuoteOfTheDayViewModel>("authors/quotes/random");
     }
 }
