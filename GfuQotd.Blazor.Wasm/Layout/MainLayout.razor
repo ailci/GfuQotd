@@ -10,7 +10,14 @@
         </div>
 
         <article class="content px-4">
-            @Body
+            <CascadingValue Value="_headingColor" Name="HeadingColor">
+                @Body
+            </CascadingValue>
         </article>
     </main>
 </div>
+
+@code
+{
+    private readonly string _headingColor = "text-primary";
+}

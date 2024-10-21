@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GfuQotd.Blazor.Wasm", "GfuQotd.Blazor.Wasm\GfuQotd.Blazor.Wasm.csproj", "{D9E57117-D31A-409B-A341-42A2D4B6127F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GfuQotd.Shared", "GfuQotd.Shared\GfuQotd.Shared.csproj", "{122E708B-92F0-4804-AAB9-E14612DAB0A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D9E57117-D31A-409B-A341-42A2D4B6127F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9E57117-D31A-409B-A341-42A2D4B6127F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9E57117-D31A-409B-A341-42A2D4B6127F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{122E708B-92F0-4804-AAB9-E14612DAB0A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{122E708B-92F0-4804-AAB9-E14612DAB0A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{122E708B-92F0-4804-AAB9-E14612DAB0A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{122E708B-92F0-4804-AAB9-E14612DAB0A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
