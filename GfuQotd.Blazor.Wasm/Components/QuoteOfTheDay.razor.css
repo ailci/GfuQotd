@@ -1,0 +1,32 @@
+/* BLOCKQUOTE CUSTOM ********************************************************************************************/
+blockquote {
+    margin: auto;
+    font: 2em/1.3 Georgia, serif;
+    text-align: center;
+}
+
+    blockquote p {
+        margin: 0;
+    }
+
+    blockquote cite {
+        margin-top: 1rem;
+        font: 1rem/1.2 Helvetica, Arial, sans-serif;
+    }
+
+    blockquote::before,
+    blockquote::after {
+        content: '';
+        display: block;
+        height: 2em;
+        width: 100%;
+        background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22-6%200%2012%204%22%3E%3Ctext%20x%3D%220%22%20y%3D%222%22%20text-anchor%3D%22middle%22%20font-family%3D%22Georgia%22%20font-size%3D%223%22%20fill%3D%22hsl%28224%2C%2060%25%2C%2060%25%29%22%3E%E2%80%9E%3C%2Ftext%3E%3Cg%20stroke-width%3D%220.1%22%20stroke%3D%22hsl%28224%2C%2060%25%2C%2060%25%29%22%3E%3Cline%20x1%3D%226%22%20x2%3D%221.5%22%20y1%3D%222%22%20y2%3D%222%22%2F%3E%3Cline%20x1%3D%22-6%22%20x2%3D%22-1.5%22%20y1%3D%222%22%20y2%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+        background-position: center;
+        background-repeat: no-repeat;
+        align-self: center;
+    }
+
+    blockquote:lang(en)::before,
+    blockquote:lang(de)::after {
+        transform: rotate(0.5turn);
+    }
