@@ -12,7 +12,7 @@ else
                 <h5 class="display-6 py-3 @Color">@Title</h5>
                 <p class="text-center">
                     <!-- 1. Variante -->
-                   @*  @if (!string.IsNullOrEmpty(QotdVm.AuthorPhotoMimeType) && QotdVm.AuthorPhoto is not null)
+                    @*  @if (!string.IsNullOrEmpty(QotdVm.AuthorPhotoMimeType) && QotdVm.AuthorPhoto is not null)
                     {
                         <img width="150" src="data:@QotdVm.AuthorPhotoMimeType;base64,@Convert.ToBase64String(QotdVm.AuthorPhoto)"/>
                     }
@@ -40,6 +40,9 @@ else
                 </blockquote>
             </div>
         </div>
+        <div class="overflow-hidden">
+            @LogOfQotd
+        </div>
     </div>
 }
 
@@ -54,4 +57,7 @@ else
 
     [Parameter] 
     public QuoteOfTheDayViewModel? QotdVm { get; set; }
+
+    [Parameter] 
+    public RenderFragment? LogOfQotd { get; set; }
 }

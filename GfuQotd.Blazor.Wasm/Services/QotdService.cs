@@ -1,6 +1,7 @@
 ﻿using GfuQotd.Shared.Model;
 using System.Net.Http;
 using System.Net.Http.Json;
+using GfuQotd.Blazor.Wasm.Utilities;
 using Microsoft.Extensions.Options;
 
 namespace GfuQotd.Blazor.Wasm.Services
@@ -30,7 +31,7 @@ namespace GfuQotd.Blazor.Wasm.Services
         {
             var authorsVm = await _client.GetFromJsonAsync<IEnumerable<AuthorViewModel>>(QotdAuthorsUri);
             
-            _logger.LogInformation(authorsVm.ToString());
+            _logger.LogInformation(authorsVm?.LogAsJson());
 
             return authorsVm;
         }

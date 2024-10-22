@@ -1,8 +1,13 @@
 ﻿@page "/"
 @page "/index"
 @page "/home"
+@using GfuQotd.Blazor.Wasm.Utilities
 
 <PageTitle>Home</PageTitle>
 
 
-<QuoteOfTheDay Title="Spruch Des Tages" QotdVm="QotdViewModel"></QuoteOfTheDay>
+<QuoteOfTheDay Title="Spruch Des Tages" QotdVm="QotdViewModel">
+    <LogOfQotd>
+        <div class="alert alert-dark">@QotdViewModel?.LogAsJson()</div>
+    </LogOfQotd>
+</QuoteOfTheDay>
