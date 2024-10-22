@@ -1,5 +1,6 @@
 using System.Net.Http.Json;
 using System.Text.Json;
+using GfuQotd.Blazor.Wasm.Services;
 using GfuQotd.Shared.Model;
 using Microsoft.AspNetCore.Components;
 
@@ -12,6 +13,8 @@ public partial class Home
     public QuoteOfTheDayViewModel? QotdViewModel { get; set; }
 
     [Inject] public IHttpClientFactory HttpClientFactory { get; set; } = default!;
+
+    [Inject] public IQotdService QotdService { get; set; } = default!;
 
     //protected override void OnInitialized()
     //{
@@ -34,7 +37,10 @@ public partial class Home
         //QotdViewModel = JsonSerializer.Deserialize<QuoteOfTheDayViewModel>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true});
 
         // 2. Version mit HttpClientFactory Abkürzung
-        using var client = HttpClientFactory.CreateClient("qotdapiservice");
-        QotdViewModel = await client.GetFromJsonAsync<QuoteOfTheDayViewModel>("authors/quotes/random");
+        //using var client = HttpClientFactory.CreateClient("qotdapiservice");
+        //QotdViewModel = await client.GetFromJsonAsync<QuoteOfTheDayViewModel>("authors/quotes/random");
+
+        // 3. Version mit Service
+        QotdViewModel = await QotdService.GetQuoteOfTheDayAsync();
     }
 }
