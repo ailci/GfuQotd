@@ -20,6 +20,22 @@ public partial class Authors
 
     private async Task GetAuthors()
     {
-        AuthorsVm = await QotdService.GetAuthorAsync();
+        AuthorsVm = (await QotdService.GetAuthorAsync())?.OrderBy(c => c.Name);
+    }
+
+    private async Task DeleteAuthor(Guid authorId)
+    {
+        Logger.LogInformation($"Eltern Komponente Löschen von Author-Id {authorId}...");
+
+        var isAuthorDeleted = await QotdService.DeleteAuthorAsync(authorId);
+
+        if (isAuthorDeleted)
+        {
+            await GetAuthors();
+        }
+        else
+        {
+            
+        }
     }
 }

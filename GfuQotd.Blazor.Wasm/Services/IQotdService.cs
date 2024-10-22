@@ -5,6 +5,8 @@ namespace GfuQotd.Blazor.Wasm.Services
     public interface IQotdService
     {
         Task<QuoteOfTheDayViewModel?> GetQuoteOfTheDayAsync();
-        Task<IEnumerable<AuthorViewModel>?> GetAuthorAsync();
+        Task<QuoteOfTheDayViewModel?> GetQuoteOfTheDayWithApiKeyAsync();
+        Task<IEnumerable<AuthorViewModel>?> GetAuthorAsync();   
+        Task<bool> DeleteAuthorAsync(Guid authorId);
     }
 }

@@ -41,6 +41,9 @@ public partial class Home
         //QotdViewModel = await client.GetFromJsonAsync<QuoteOfTheDayViewModel>("authors/quotes/random");
 
         // 3. Version mit Service
-        QotdViewModel = await QotdService.GetQuoteOfTheDayAsync();
+        //QotdViewModel = await QotdService.GetQuoteOfTheDayAsync();
+
+        // 4. Version mit ApiKey
+        QotdViewModel = await QotdService.GetQuoteOfTheDayWithApiKeyAsync();
     }
 }

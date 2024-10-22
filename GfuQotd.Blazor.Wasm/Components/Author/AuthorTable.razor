@@ -29,7 +29,8 @@ else
                     <td>@(author.BirthDate is not null ? author.BirthDate.Value.ToShortDateString() : "k.A.")</td>
                     <td>
                         <!-- Aktionen -->
-                        <a href="" class="btn btn-info"><i class="bi bi-info-circle-fill"></i></a>
+                        <a href="@($"author/details/{author.Id}")" class="btn btn-info"><i class="bi bi-info-circle-fill"></i></a>
+                        <button class="btn btn-danger" @onclick="() => DeleteAuthor(author)"><i class="bi bi-trash"></i></button>
                     </td>
                 </tr>
             }
