@@ -1,5 +1,10 @@
 ﻿@page "/authors/overview"
 
+
+<p>
+    <button class="btn btn-primary" @onclick="NavigateToNewAuthor"><i class="bi bi-plus-circle"></i> Neuer Autor</button>
+</p>
+
 <div class="row">
     <div class="col">
         <AuthorTable AuthorViewModels="AuthorsVm" OnAuthorDelete="DeleteAuthor"></AuthorTable>

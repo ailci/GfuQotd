@@ -10,6 +10,7 @@ public partial class Authors
     [Inject] public ILogger<Authors> Logger { get; set; } = default!;
     [Inject] public IQotdService QotdService { get; set; } = default!;
     public IEnumerable<AuthorViewModel>? AuthorsVm { get; set; }
+    [Inject] public NavigationManager NavManager { get; set; } = default!;
 
     #endregion
 
@@ -37,5 +38,10 @@ public partial class Authors
         {
             
         }
+    }
+
+    private void NavigateToNewAuthor()
+    {
+        NavManager.NavigateTo("/authors/new");
     }
 }

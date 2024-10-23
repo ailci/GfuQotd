@@ -1,0 +1,57 @@
+﻿@page "/authors/new"
+
+<div class="row">
+    <div class="col">
+        <h4>Autor erstellen</h4>
+        <hr />
+    </div>
+</div>
+<div class="row align-items-center">
+    <div class="col-6">
+        <!-- Formular -->
+        <EditForm Model="AuthorForCreateVm" OnValidSubmit="HandleValidSubmit" class="card-body bg-light">
+            
+            <DataAnnotationsValidator />
+
+            <!-- Name-->
+            <div class="form-floating mb-3">
+                <InputText id="Name" @bind-Value="AuthorForCreateVm.Name" placeholder=" " class="form-control"></InputText>
+                <label for="Name">Name</label>
+                <ValidationMessage For="() => AuthorForCreateVm.Name"></ValidationMessage>
+            </div> 
+            
+            <!-- Beschreibung-->
+            <div class="form-floating mb-3">
+                <InputText id="Description" @bind-Value="AuthorForCreateVm.Description" placeholder=" " class="form-control"></InputText>
+                <label for="Description">Beschreibung</label>
+                <ValidationMessage For="() => AuthorForCreateVm.Description"></ValidationMessage>
+            </div>
+            
+            <!-- Geburtsdatum-->
+            <div class="form-floating mb-3">
+                <InputDate id="Birthdate" @bind-Value="AuthorForCreateVm.BirthDate" placeholder=" " class="form-control"></InputDate>
+                <label for="Birthdate">Geburtsdatum</label>
+                <ValidationMessage For="() => AuthorForCreateVm.BirthDate"></ValidationMessage>
+            </div> 
+            
+            <!-- Photo-->
+            <div class="form-floating mb-3">
+                <InputFile id="Photo"
+                           @bind-Value="AuthorForCreateVm.Photo"
+                           placeholder=" "
+                           class="form-control"
+                           accept="image/*">
+                </InputFile>
+                <label for="Photo">Photo</label>
+                <ValidationMessage For="() => AuthorForCreateVm.Photo"></ValidationMessage>
+            </div>
+            
+            <!-- Absenden -->
+            <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-primary" disabled="@(!context.Validate())"><i class="bi bi-send-fill"></i> speichern</button>
+            </div>
+
+        </EditForm>
+
+    </div>
+</div>
