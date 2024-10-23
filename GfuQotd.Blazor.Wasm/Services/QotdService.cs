@@ -1,6 +1,8 @@
 ﻿using GfuQotd.Shared.Model;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Net.Mime;
 using GfuQotd.Blazor.Wasm.Utilities;
 using Microsoft.Extensions.Options;
 
@@ -48,6 +50,47 @@ namespace GfuQotd.Blazor.Wasm.Services
                 var reasonPhrase = response.ReasonPhrase;
                 throw new Exception($"Fehler von der API: {statusCode} {reasonPhrase}");
             }
+
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> AddAuthorAsync(AuthorForCreateViewModel authorForCreateViewModel)
+        {
+            _logger.LogInformation($"Zu sendendes Model: {authorForCreateViewModel.LogAsJson()}");
+
+            var formValues = new List<KeyValuePair<string, string>>
+            {
+                new("Name", authorForCreateViewModel.Name),
+                new("Description", authorForCreateViewModel.Description)
+            };
+
+            //Falls Geburtsdatum vorhanden
+            if(authorForCreateViewModel.BirthDate.HasValue)
+                formValues.Add(new KeyValuePair<string, string>("BirthDate", authorForCreateViewModel.BirthDate.Value.ToString("O")));
+
+            var multipartContent = new MultipartFormDataContent();
+            formValues.ForEach(c => multipartContent.Add(new StringContent(c.Value), c.Key));
+
+            //Bild vorhanden
+            if (authorForCreateViewModel.Photo is not null)
+            {
+                var fileContent = new StreamContent(authorForCreateViewModel.Photo.OpenReadStream());
+                fileContent.Headers.ContentType = new MediaTypeHeaderValue(authorForCreateViewModel.Photo.ContentType);
+                fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "Photo",
+                    FileName = authorForCreateViewModel.Photo.Name
+                };
+
+                multipartContent.Add(fileContent);
+            }
+
+            //_logger.LogInformation($"Zu Multipart Model: {multipartContent.LogAsJson()}");
+
+            var response = await _client.PostAsync(QotdAuthorsUri, multipartContent);
+            response.EnsureSuccessStatusCode();
+
+            _logger.LogInformation("Autor erfolgreich hinzugefügt");
 
             return response.IsSuccessStatusCode;
         }

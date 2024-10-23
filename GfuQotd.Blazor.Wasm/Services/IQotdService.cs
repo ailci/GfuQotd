@@ -8,5 +8,6 @@ namespace GfuQotd.Blazor.Wasm.Services
         Task<QuoteOfTheDayViewModel?> GetQuoteOfTheDayWithApiKeyAsync();
         Task<IEnumerable<AuthorViewModel>?> GetAuthorAsync();   
         Task<bool> DeleteAuthorAsync(Guid authorId);
+        Task<bool> AddAuthorAsync(AuthorForCreateViewModel authorForCreateViewModel);
     }
 }

@@ -36,7 +36,7 @@
             
             <!-- Photo-->
             <div class="form-floating mb-3">
-                <InputFile id="Photo"
+                <InputFile OnChange="OnInputFileChange" id="Photo"
                            @bind-Value="AuthorForCreateVm.Photo"
                            placeholder=" "
                            class="form-control"
