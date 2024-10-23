@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GfuQotd.Blazor.Wasm", "GfuQ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GfuQotd.Shared", "GfuQotd.Shared\GfuQotd.Shared.csproj", "{122E708B-92F0-4804-AAB9-E14612DAB0A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qotd.Components.Library", "Qotd.Components.Library\Qotd.Components.Library.csproj", "{32FBFFF0-401E-4AE5-BD1A-E36C3142AD61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qotd.Components.Library", "Qotd.Components.Library\Qotd.Components.Library.csproj", "{32FBFFF0-401E-4AE5-BD1A-E36C3142AD61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

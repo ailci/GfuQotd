@@ -6,34 +6,39 @@ else
 {
     <table class="table table-hover">
         <thead>
-            <tr>
-                <th>Photo</th>
-                <th>Name</th>
-                <th>Beschreibung</th>
-                <th>Geburtsdatum</th>
-                <th>Aktion</th>
-            </tr>
+        <tr>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Beschreibung</th>
+            <th>Geburtsdatum</th>
+            <th>Aktion</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var author in AuthorViewModels)
-            {
-                <tr>
-                    <td>
-                        <ImageDataUri ImageMimeType="@author.PhotoMimeType"
-                                      Image="@author.Photo"
-                                      alt="@author.Name">
-                        </ImageDataUri>
-                    </td>
-                    <td>@author.Name</td>
-                    <td>@author.Description</td>
-                    <td>@(author.BirthDate is not null ? author.BirthDate.Value.ToShortDateString() : "k.A.")</td>
-                    <td>
-                        <!-- Aktionen -->
-                        <a href="@($"author/details/{author.Id}")" class="btn btn-info"><i class="bi bi-info-circle-fill"></i></a>
-                        <button class="btn btn-danger" @onclick="() => DeleteAuthor(author)"><i class="bi bi-trash"></i></button>
-                    </td>
-                </tr>
-            }
+        @foreach (var author in AuthorViewModels)
+        {
+            <tr>
+                <td>
+                    <ImageDataUri ImageMimeType="@author.PhotoMimeType"
+                                  Image="@author.Photo"
+                                  alt="@author.Name">
+                    </ImageDataUri>
+                </td>
+                <td>@author.Name</td>
+                <td>@author.Description</td>
+                <td>@(author.BirthDate is not null ? author.BirthDate.Value.ToShortDateString() : "k.A.")</td>
+                <td>
+                    <!-- Aktionen -->
+                    <a href="@($"author/details/{author.Id}")" class="btn btn-info"><i class="bi bi-info-circle-fill"></i></a>
+                    <button class="btn btn-danger" @onclick="() => DeleteAuthor(author)"><i class="bi bi-trash"></i></button>
+                </td>
+            </tr>
+        }
         </tbody>
     </table>
+
+    <ConfirmDialog @ref="_confirmDialogComponent" 
+                   ConfirmTitle="Löschen bestätigen" 
+                   OnDeleteConfirm="@ConfirmDeleteClicked">
+    </ConfirmDialog>
 }

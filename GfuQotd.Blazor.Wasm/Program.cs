@@ -22,6 +22,7 @@ builder.Services.Configure<QotdAppSettings>(builder.Configuration.GetSection("Qo
 
 //DI
 builder.Services.AddScoped<IQotdService, QotdService>();
+builder.Services.AddScoped<DialogService>();
 
 //HttpClient Typed Version
 builder.Services.AddScoped<ApiKeyDelegationgHandler>();
